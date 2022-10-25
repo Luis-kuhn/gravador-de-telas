@@ -72,14 +72,14 @@ window.onload = () => {
         videoElement.poster = '';
         blobs = [];
 
-        rec = new MediaRecorder(stream, { mimeType: 'video/webm; codecs=vp8,opus' });
+        rec = new MediaRecorder(stream, { mimeType: 'video/mp4; codecs="avc1.424028, mp4a.40.2' });
         rec.ondataavailable = (e) => blobs.push(e.data);
         rec.onstop = async () => {
 
-            blob = new Blob(blobs, { type: 'video/webm' });
+            blob = new Blob(blobs, { type: 'video/mp4' });
             let url = window.URL.createObjectURL(blob);
             download.href = url;
-            download.download = 'gravacao.webm';
+            download.download = 'gravacao.mp4';
             $(download).removeClass('disabled');
 
             videoElement.src = url;
